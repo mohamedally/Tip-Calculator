@@ -137,7 +137,7 @@
                                 <segments>
                                     <segment title="15%"/>
                                     <segment title="20%"/>
-                                    <segment title="30%"/>
+                                    <segment title="22%"/>
                                 </segments>
                                 <connections>
                                     <action selector="changedDefaultPercent:" destination="Ww9-fH-mlE" eventType="valueChanged" id="WSd-6z-b9R"/>
