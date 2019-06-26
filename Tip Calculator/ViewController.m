@@ -23,6 +23,26 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSInteger selectedIndex = [defaults integerForKey:@"default_index"];
+    self.tipControl.selectedSegmentIndex = selectedIndex;
+    
+    double bill  = [self.billField.text doubleValue];
+    NSArray *percentages = @[@(0.15), @(0.2), @(0.22)];
+    double tipPercent = [percentages[self.tipControl.selectedSegmentIndex] doubleValue];
+    double tip = tipPercent * bill;
+    double total = bill + tip;
+    
+    
+    self.tipLabel.text = [NSString stringWithFormat:@"$%.2f", tip];
+    self.totalLabel.text = [NSString stringWithFormat:@"$%.2f", total];
+}
+
+
 - (IBAction)onTaP:(id)sender {
     NSLog(@"Hello");
     [self.view endEditing:YES];
@@ -41,6 +61,33 @@
     
     self.tipLabel.text = [NSString stringWithFormat:@"$%.2f", tip];
     self.totalLabel.text = [NSString stringWithFormat:@"$%.2f", total];
+    
+    
+}
+- (IBAction)editingDidBegin:(id)sender {
+    
+   
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        self.billField.frame = CGRectMake(self.billField.frame.origin.x, self.billField.frame.origin.y+30, self.billField.frame.size.width,self.billField.frame.size.height);
+        
+        self.tipLabel.alpha = 0;
+    }];
+    
+}
+
+- (IBAction)editingDidEnd:(id)sender {
+    CGRect newFrame = self.billField.frame;
+    
+    newFrame.origin.y -= 30;
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        self.billField.frame = newFrame;
+        self.tipLabel.alpha = 30;
+    }];
+    
+   self.billField.frame = newFrame;
+   
 }
 
 @end

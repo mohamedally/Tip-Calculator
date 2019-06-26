@@ -13,7 +13,6 @@
         <!--Tips-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -74,13 +73,15 @@
                                     <action selector="onEdit:" destination="BYZ-38-t0r" eventType="valueChanged" id="Qgx-zI-aIc"/>
                                 </connections>
                             </segmentedControl>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zGE-aI-mmk">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zGE-aI-mmk">
                                 <rect key="frame" x="179" y="84" width="180" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
+                                    <action selector="editingDidBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="Mcl-hP-8F3"/>
+                                    <action selector="editingDidEnd:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="9G2-lY-9le"/>
                                     <action selector="onEdit:" destination="BYZ-38-t0r" eventType="editingChanged" id="hzx-Dm-bDw"/>
                                 </connections>
                             </textField>
@@ -99,7 +100,13 @@
                             <outletCollection property="gestureRecognizers" destination="ooN-y4-0J8" appends="YES" id="F0M-Ay-uYb"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Tips" id="pcY-rq-mJd"/>
+                    <navigationItem key="navigationItem" title="Tips" id="pcY-rq-mJd">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="RJh-jj-UuW">
+                            <connections>
+                                <segue destination="Ww9-fH-mlE" kind="push" id="82n-Pz-Cgz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="billField" destination="zGE-aI-mmk" id="lAU-Kf-HEW"/>
                         <outlet property="tipControl" destination="bqL-sI-uSs" id="c7k-fe-L0Y"/>
@@ -107,6 +114,7 @@
                         <outlet property="totalLabel" destination="yrc-Lv-g3t" id="mK7-Ub-LeY"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="ooN-y4-0J8">
                     <connections>
                         <action selector="onTaP:" destination="BYZ-38-t0r" id="OKE-IR-7cm"/>
@@ -114,6 +122,46 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-249" y="-16"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="ZGR-gR-tDb">
+            <objects>
+                <viewController id="Ww9-fH-mlE" customClass="SettingsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Opj-NK-jMa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bwp-Vj-L3S">
+                                <rect key="frame" x="16" y="138" width="343" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="15%"/>
+                                    <segment title="20%"/>
+                                    <segment title="30%"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changedDefaultPercent:" destination="Ww9-fH-mlE" eventType="valueChanged" id="WSd-6z-b9R"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Default Percent: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXl-Li-M80">
+                                <rect key="frame" x="117" y="80" width="166" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Gmy-p3-QZL"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="jMu-3L-uXT"/>
+                    <connections>
+                        <outlet property="settingsControl" destination="bwp-Vj-L3S" id="pb0-Db-IXz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v7c-IX-gTD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="448.80000000000001" y="-7.6461769115442282"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iEc-zL-5o0">
