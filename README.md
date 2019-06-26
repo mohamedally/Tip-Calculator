@@ -34,7 +34,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+Intergrating the settings page with the rest of the app was challenging at first, but I was able to figure it out with a friend
 
 ## Credits
 
