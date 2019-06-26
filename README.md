@@ -28,7 +28,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://recordit.co/eKX3IS0t5C' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
@@ -40,7 +40,7 @@ Describe any challenges encountered while building the app.
 
 List an 3rd party libraries, icons, graphics, or other assets you used in your app.
 
-- [AFNetworking](https://github.com/AFNetworking/AFNetworking) - networking task library
+- [AFNetworking](http://g.recordit.co/H5KdC8GRDz.gif) - networking task library
 
 ## License
 
